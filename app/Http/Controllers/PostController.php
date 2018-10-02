@@ -29,7 +29,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        return view('post.create', [
+            'tags' => Tag::all(),
+        ]);
     }
 
     /**
@@ -60,6 +62,7 @@ class PostController extends Controller
     {
         return view('post.show', [
             'post' => $post,
+            'tags' => Tag::all(),
         ]);
     }
 

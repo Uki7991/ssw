@@ -14,7 +14,7 @@ class Tag extends Model
             $tag = Tag::where('slug', str_slug($tagName))->first();
 
             if ($tag) {
-                if (!$post->tags()->where('tag_id', $tag->id)) {
+                if (!$post->tags->where('id', 11)->first()) {
                     $post->tags()->attach($tag->id);
                 }
             } else {

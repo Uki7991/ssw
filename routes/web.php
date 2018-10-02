@@ -11,21 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'MainController@index')->name('welcome');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/post/show', function () {
-    return view('post.show');
-})->name('post.show');
-Route::get('/tag/show', function () {
-    return view('tag.show');
-})->name('tag.show');
-
 
 Route::group(['middleware' => 'admin'], function () {
     Route::resource('post', 'PostController')->except([
@@ -36,9 +26,9 @@ Route::group(['middleware' => 'admin'], function () {
     ]);
 });
 
-//Route::resource('post', 'PostController')->only([
-//    'show', 'index',
-//]);
-//Route::resource('tag', 'TagController')->only([
-//    'show',
-//]);
+Route::resource('post', 'PostController')->only([
+   'show', 'index',
+]);
+Route::resource('tag', 'TagController')->only([
+   'show',
+]);

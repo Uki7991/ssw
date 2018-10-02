@@ -22,9 +22,9 @@
                     <div class="form-group">
                         <label class="col-12 px-0" for="tags_of_post">Теги статьи</label>
                         <select name="tags[]" id="tags_of_post" class="form-control w-75 {{ $errors->has('tags') ? 'is-invalid' : '' }}"  multiple>
-                            <option value="PHP">Php</option>
-                            <option value="Laravel">Laravel</option>
-                            <option value="Symfony">Symfony</option>
+                            @foreach($tags as $tag)
+                                <option value="{{ $tag->slug }}">{{ $tag->name }}</option>
+                            @endforeach
                         </select>
                         @if($errors->has('tags'))
                             <span class="invalid-feedback" role="alert">
