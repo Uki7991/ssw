@@ -12,7 +12,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="name_of_post">Тема статьи</label>
-                        <input name="name" type="text" id="name_of_post" class="form-control w-75 {{ $errors->has('name') ?? 'is-invalid' }}" value="{{ $errors->has('name') ? old('name') : '' }}" placeholder="Введите тему статьи" required>
+                        <input name="name" type="text" id="name_of_post" class="form-control w-75 {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') }}" placeholder="Введите тему статьи">
                         @if($errors->has('name'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('name') }}</strong>
@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group">
                         <label class="col-12 px-0" for="tags_of_post">Теги статьи</label>
-                        <select name="tags[]" id="tags_of_post" class="form-control w-75 {{ $errors->has('tags') ?? 'is-invalid' }}" required multiple>
+                        <select name="tags[]" id="tags_of_post" class="form-control w-75 {{ $errors->has('tags') ? 'is-invalid' : '' }}"  multiple>
                             <option value="PHP">Php</option>
                             <option value="Laravel">Laravel</option>
                             <option value="Symfony">Symfony</option>
@@ -34,7 +34,9 @@
                     </div>
                     <div class="form-group">
                         <label for="content_of_post">Текст статьи</label>
-                        <textarea name="content" class="form-control" id="content_of_post" cols="30" rows="10"></textarea>
+                        <textarea name="content" class="form-control {{ $errors->has('content') ? 'is-invalid' : '' }}" id="content_of_post" cols="30" rows="10" required>
+                            {{ old('content') }}
+                        </textarea>
                         @if($errors->has('content'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('content') }}</strong>

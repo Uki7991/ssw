@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Post;
+use App\Tag;
+use function GuzzleHttp\Psr7\str;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -35,12 +38,16 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        $post = new Post($request->all());
+        $validated = $request->validated();
+        $post = new Post($validated);
+        $post->fill(['slug' => str_slug($validated['name'])]);
         $post->save();
 
-        return redirect()->back();
+        Tag::addTagsToPost($request->tags, $post);
+
+        return redirect('/');
     }
 
     /**
