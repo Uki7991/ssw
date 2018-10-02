@@ -1,0 +1,12 @@
+<a href="#" class="text-capitalize" style="font-size: 12px;">Php</a>
+<a href="#" class="text-capitalize" style="font-size: 14px;">Laravel</a>
+<a href="#" class="text-capitalize" style="font-size: 16px;">Symfony</a>
+<a href="#" class="text-capitalize" style="font-size: 20px;">Wordpress</a>
+<a href="#" class="text-capitalize" style="font-size: 16px;">Php</a>
+<a href="#" class="text-capitalize" style="font-size: 18px;">Laravel</a>
+<a href="#" class="text-capitalize" style="font-size: 24px;">Symfony</a>
+<a href="#" class="text-capitalize" style="font-size: 24px;">Wordpress</a>
+<a href="#" class="text-capitalize" style="font-size: 22px;">Php</a>
+<a href="#" class="text-capitalize" style="font-size: 16px;">Laravel</a>
+<a href="#" class="text-capitalize" style="font-size: 18px;">Symfony</a>
+<a href="#" class="text-capitalize" style="font-size: 12px;">Wordpress</a>
