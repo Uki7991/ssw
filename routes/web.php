@@ -25,3 +25,20 @@ Route::get('/post/show', function () {
 Route::get('/tag/show', function () {
     return view('tag.show');
 })->name('tag.show');
+
+
+Route::group(['middleware' => 'admin'], function () {
+    Route::resource('post', 'PostController')->except([
+        'show'
+    ]);
+    Route::resource('tag', 'TagController')->except([
+        'show'
+    ]);
+});
+
+//Route::resource('post', 'PostController')->only([
+//    'show', 'index',
+//]);
+//Route::resource('tag', 'TagController')->only([
+//    'show',
+//]);
