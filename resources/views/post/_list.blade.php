@@ -8,9 +8,13 @@
                     <a href="/tag/show" class="badge">{{ $tag->name }}</a>
                 @endforeach
             </h6>
-            <p class="card-text">{!! str_limit($post->content, 400, '...') !!}</p>
-            <a href="{{ route('post.show', $post->id) }}" class="card-link">Читать далее</a>
+            <div class="card-text">{!! str_limit($post->content, 400, '...') !!}</div>
+            <div class="card-body">
+                <a href="{{ route('post.show', $post->id) }}" class="card-link">Читать далее</a>
+            </div>
         </div>
     </div>
 
 @endforeach
+
+{{ $posts->links() }}

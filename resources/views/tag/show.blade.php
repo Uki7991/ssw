@@ -11,7 +11,7 @@
 
         <div class="row">
             <div class="col-8">
-                @include('post._list', ['posts' => $tag->posts->sortByDesc('created_at')])
+                @include('post._list', ['posts' => $tag->posts->sortByDesc('created_at')->paginate(5)])
             </div>
 
             @include('tag.index')
