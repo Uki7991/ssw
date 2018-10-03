@@ -62,7 +62,8 @@ class PostController extends Controller
     {
         return view('post.show', [
             'post' => $post,
-            'tags' => Tag::all(),
+            'tags' => Tag::withCount('posts')->get(),
+            'bigTag' => Tag::findBigTag(),
         ]);
     }
 

@@ -10,9 +10,12 @@ class MainController extends Controller
 {
     public function index()
     {
+        $bigTag = Tag::findBigTag();
+
     	return view('welcome', [
     		'posts' => Post::all()->sortByDesc('created_at')->paginate(5),
-    		'tags' => Tag::all(),
+    		'tags' => Tag::withCount('posts')->get(),
+            'bigTag' => $bigTag,
     	]);
     }
 }

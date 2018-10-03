@@ -5,13 +5,19 @@
             <h2 class="card-title font-weight-bold h1">{{ $post->name }}</h2>
             <h6 class="card-subtitle mb-2 text-muted"><span>{{ $post->created_at }}</span> / 
                 @foreach($post->tags as $tag)
-                    <a href="/tag/show" class="badge">{{ $tag->name }}</a>
+                    <a href="{{ route('tag.show', $tag->id) }}" class="badge">{{ $tag->name }}</a>
                 @endforeach
             </h6>
             <div class="card-text">{!! str_limit($post->content, 400, '...') !!}</div>
             <div class="card-body">
                 <a href="{{ route('post.show', $post->id) }}" class="card-link">Читать далее</a>
             </div>
+            @if(Auth::user() && Auth::user()->admin)
+                <div class="card-body">
+                    <a href="{{ route('post.edit', $post->id) }}" class="card-link btn btn-warning">Редактировать</a>
+                    <a href="{{ route('post.destroy', $post->id) }}" class="card-link btn btn-danger">Удалить</a>
+                </div>
+            @endif
         </div>
     </div>
 

@@ -8,6 +8,13 @@ class Tag extends Model
 {
     protected $guarded = [];
 
+    public static function findBigTag()
+    {
+        return Tag::all()->sortByDesc(function ($tag, $key) {
+            return $tag->posts->count();
+        })->first();
+    }
+
     public static function addTagsToPost($tags, Post $post)
     {
         foreach ($tags as $index => $tagName) {
