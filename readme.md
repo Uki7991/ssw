@@ -5,9 +5,10 @@
 1. git clone https://github.com/Uki7991/ssw.git
 2. cd 'your projects directory'/ssw/
 3. composer install
-4. php artisan key:generate 
-5. add database with name 'ssw'
-6. import sql file to your database
+4. cp .ev.example .env
+5. php artisan key:generate 
+6. add database with name 'ssw'
+7. import in this directory ssw.sql file to your database
 
 Now you can access to this project
 
