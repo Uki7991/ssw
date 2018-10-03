@@ -15,7 +15,11 @@
             @if(Auth::user() && Auth::user()->admin)
                 <div class="card-body">
                     <a href="{{ route('post.edit', $post->id) }}" class="card-link btn btn-warning">Редактировать</a>
-                    <a href="{{ route('post.destroy', $post->id) }}" class="card-link btn btn-danger">Удалить</a>
+                    <a href="{{ route('post.destroy', $post->id) }}" onclick="event.preventDefault(); document.getElementById('delete-post-{{ $post->id }}').submit()" class="card-link btn btn-danger">Удалить</a>
+                    <form class="d-none" id="delete-post-{{ $post->id }}" action="{{ route('post.destroy', $post->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                    </form>
                 </div>
             @endif
         </div>
