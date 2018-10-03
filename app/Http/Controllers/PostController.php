@@ -77,6 +77,7 @@ class PostController extends Controller
     {
         return view('post.edit', [
             'post' => $post,
+            'tags' => Tag::all(),
         ]);
     }
 
@@ -93,7 +94,9 @@ class PostController extends Controller
 
         $post->save();
 
-        return redirect()->back();
+        Tag::addTagsToPost($request->tags, $post);
+
+        return redirect('/');
     }
 
     /**
