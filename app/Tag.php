@@ -8,6 +8,11 @@ class Tag extends Model
 {
     protected $guarded = [];
 
+    /**
+     * Find tag with max count of posts
+     *
+     * @return mixed
+     */
     public static function findBigTag()
     {
         return Tag::all()->sortByDesc(function ($tag, $key) {
@@ -15,6 +20,12 @@ class Tag extends Model
         })->first();
     }
 
+    /**
+     * Adding tags to post
+     *
+     * @param $tags
+     * @param Post $post
+     */
     public static function addTagsToPost($tags, Post $post)
     {
         foreach ($tags as $index => $tagName) {
@@ -33,6 +44,11 @@ class Tag extends Model
         }
     }
 
+    /**
+     * Relation with Post (Many to Many)
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function posts()
     {
         return $this->belongsToMany('App\Post');

@@ -32,3 +32,5 @@ Route::resource('post', 'PostController')->only([
 Route::resource('tag', 'TagController')->only([
    'show',
 ]);
+
+Route::get('/about', 'MainController@about')->name('about');

@@ -7,7 +7,7 @@ use Closure;
 class AdminMiddleware
 {
     /**
-     * Handle an incoming request.
+     * Handle an incoming request. Middleware for admin
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

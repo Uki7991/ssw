@@ -8,6 +8,11 @@ use App\Tag;
 
 class MainController extends Controller
 {
+    /**
+     * Return view for home page
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $bigTag = Tag::findBigTag();
@@ -17,5 +22,13 @@ class MainController extends Controller
     		'tags' => Tag::withCount('posts')->get(),
             'bigTag' => $bigTag,
     	]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function about()
+    {
+        return view('about');
     }
 }
